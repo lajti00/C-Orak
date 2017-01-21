@@ -1,0 +1,22 @@
+﻿<Window x:Class="WPF_2._1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_2._1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:BoolToVisibilityConverter x:Key="myConverter" />
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <TextBox Text="{Binding MyText}" 
+                     Visibility="{Binding MyTextVisible, Converter={StaticResource myConverter}  }" />
+            <CheckBox x:Name="tbVisiblity" IsChecked="{Binding MyTextVisible}"  />
+            <!--<Button Content="Change visiblity" Click="Button_Click" />-->
+            <Button Content="Change visiblity" Command="{Binding ChangeMyVisiblity}" />
+            <ListView ItemsSource="{Binding MyData}" />
+        </StackPanel>
+    </Grid>
+</Window>
